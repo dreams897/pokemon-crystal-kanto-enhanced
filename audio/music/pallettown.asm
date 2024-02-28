@@ -154,8 +154,9 @@ Music_PalletTown_Ch1:
 	note D_, 2
 	sound_loop 0, .mainloop
 
+	sound_ret ; unused
+
 Music_PalletTown_Ch2:
-	vibrato 18, 4, 4
 	duty_cycle 2
 	stereo_panning TRUE, FALSE
 .mainloop:
@@ -267,10 +268,11 @@ Music_PalletTown_Ch2:
 	note A_, 8
 	sound_loop 0, .mainloop
 
+	sound_ret ; unused
 Music_PalletTown_Ch3:
 	vibrato 24, 2, 8
-.mainloop:
 	note_type 12, 1, 2
+.mainloop:
 	octave 4
 	note G_, 6
 	note E_, 6
@@ -315,3 +317,5 @@ Music_PalletTown_Ch3:
 	note E_, 8
 	note F#, 8
 	sound_loop 0, .mainloop
+
+	sound_ret ; unused
