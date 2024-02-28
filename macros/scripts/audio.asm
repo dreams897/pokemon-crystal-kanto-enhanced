@@ -1,3 +1,5 @@
+toggle_perfect_pitch EQUS "pitch_offset 1"
+
 MACRO channel_count
 	assert 0 < (\1) && (\1) <= NUM_MUSIC_CHANS, \
 		"channel_count must be 1-{d:NUM_MUSIC_CHANS}"
