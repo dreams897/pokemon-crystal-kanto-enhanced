@@ -2,7 +2,7 @@ MobileCardGFX::
 INCBIN "gfx/mobile/card.2bpp"
 
 ChrisSilhouetteGFX::
-INCBIN "gfx/mobile/chris_silhouette.2bpp"
+INCBIN "gfx/mobile/red_silhouette.2bpp"
 
 KrisSilhouetteGFX::
 INCBIN "gfx/mobile/kris_silhouette.2bpp"

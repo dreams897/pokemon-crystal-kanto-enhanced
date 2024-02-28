@@ -7,12 +7,11 @@ ENDM
 OverworldSprites:
 ; entries correspond to SPRITE_* constants
 	table_width NUM_SPRITEDATA_FIELDS, OverworldSprites
-	overworld_sprite ChrisSpriteGFX, 12, WALKING_SPRITE, PAL_OW_RED
-	overworld_sprite ChrisBikeSpriteGFX, 12, WALKING_SPRITE, PAL_OW_RED
+	overworld_sprite RedSpriteGFX, 12, WALKING_SPRITE, PAL_OW_RED
+	overworld_sprite RedBikeSpriteGFX, 12, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite GameboyKidSpriteGFX, 12, STANDING_SPRITE, PAL_OW_GREEN
 	overworld_sprite RivalSpriteGFX, 12, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite OakSpriteGFX, 12, WALKING_SPRITE, PAL_OW_BROWN
-	overworld_sprite RedSpriteGFX, 12, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite BlueSpriteGFX, 12, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite BillSpriteGFX, 12, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite ElderSpriteGFX, 12, WALKING_SPRITE, PAL_OW_BROWN

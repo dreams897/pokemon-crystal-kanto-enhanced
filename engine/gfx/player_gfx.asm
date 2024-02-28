@@ -55,7 +55,7 @@ MovePlayerPic:
 	jr .loop
 
 ShowPlayerNamingChoices:
-	ld hl, ChrisNameMenuHeader
+	ld hl, RedNameMenuHeader
 	ld a, [wPlayerGender]
 	bit PLAYERGENDER_FEMALE_F, a
 	jr z, .got_header
@@ -83,8 +83,8 @@ GetPlayerNameArray: ; unreferenced
 	ret
 
 GetPlayerIcon:
-	ld de, ChrisSpriteGFX
-	ld b, BANK(ChrisSpriteGFX)
+	ld de, RedSpriteGFX
+	ld b, BANK(RedSpriteGFX)
 	ld a, [wPlayerGender]
 	bit PLAYERGENDER_FEMALE_F, a
 	jr z, .got_gfx
@@ -94,7 +94,7 @@ GetPlayerIcon:
 	ret
 
 GetCardPic:
-	ld hl, ChrisCardPic
+	ld hl, RedCardPic
 	ld a, [wPlayerGender]
 	bit PLAYERGENDER_FEMALE_F, a
 	jr z, .got_pic
@@ -102,7 +102,7 @@ GetCardPic:
 .got_pic
 	ld de, vTiles2 tile $00
 	ld bc, $23 tiles
-	ld a, BANK(ChrisCardPic) ; aka BANK(KrisCardPic)
+	ld a, BANK(RedCardPic) ; aka BANK(KrisCardPic)
 	call FarCopyBytes
 	ld hl, TrainerCardGFX
 	ld de, vTiles2 tile $23
@@ -111,8 +111,8 @@ GetCardPic:
 	call FarCopyBytes
 	ret
 
-ChrisCardPic:
-INCBIN "gfx/trainer_card/chris_card.2bpp"
+RedCardPic:
+INCBIN "gfx/trainer_card/red_card.2bpp"
 
 KrisCardPic:
 INCBIN "gfx/trainer_card/kris_card.2bpp"
@@ -123,13 +123,13 @@ INCBIN "gfx/trainer_card/trainer_card.2bpp"
 GetPlayerBackpic:
 	ld a, [wPlayerGender]
 	bit PLAYERGENDER_FEMALE_F, a
-	jr z, GetChrisBackpic
+	jr z, GetRedBackpic
 	call GetKrisBackpic
 	ret
 
-GetChrisBackpic:
-	ld hl, ChrisBackpic
-	ld b, BANK(ChrisBackpic)
+GetRedBackpic:
+	ld hl, RedBackpic
+	ld b, BANK(RedBackpic)
 	ld de, vTiles2 tile $31
 	ld c, 7 * 7
 	predef DecompressGet2bpp
@@ -141,7 +141,7 @@ HOF_LoadTrainerFrontpic:
 	ldh [hBGMapMode], a
 
 ; Get class
-	ld e, CHRIS
+	ld e, RED
 	ld a, [wPlayerGender]
 	bit PLAYERGENDER_FEMALE_F, a
 	jr z, .got_class
@@ -171,7 +171,7 @@ DrawIntroPlayerPic:
 ; Draw the player pic at (6,4).
 
 ; Get class
-	ld e, CHRIS
+	ld e, RED
 	ld a, [wPlayerGender]
 	bit PLAYERGENDER_FEMALE_F, a
 	jr z, .got_class

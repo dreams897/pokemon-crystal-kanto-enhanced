@@ -6,7 +6,7 @@ TrainerPalettes:
 
 	table_width PAL_COLOR_SIZE * 2, TrainerPalettes
 
-PlayerPalette: ; Chris uses the same colors as Cal
+PlayerPalette: ; Red uses the same colors as Cal
 INCBIN "gfx/trainers/cal.gbcpal", middle_colors
 KrisPalette: ; Kris shares Falkner's palette
 INCBIN "gfx/trainers/falkner.gbcpal", middle_colors
@@ -71,7 +71,6 @@ INCBIN "gfx/trainers/pokefan_m.gbcpal", middle_colors
 INCBIN "gfx/trainers/kimono_girl.gbcpal", middle_colors
 INCBIN "gfx/trainers/twins.gbcpal", middle_colors
 INCBIN "gfx/trainers/pokefan_f.gbcpal", middle_colors
-INCBIN "gfx/trainers/red.gbcpal", middle_colors
 INCBIN "gfx/trainers/blue.gbcpal", middle_colors
 INCBIN "gfx/trainers/officer.gbcpal", middle_colors
 INCBIN "gfx/trainers/grunt_f.gbcpal", middle_colors

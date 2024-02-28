@@ -1,4 +1,4 @@
-ChrisNameMenuHeader:
+RedNameMenuHeader:
 	db MENU_BACKUP_TILES ; flags
 	menu_coords 0, 0, 10, TEXTBOX_Y - 1
 	dw .MaleNames
@@ -10,10 +10,10 @@ ChrisNameMenuHeader:
 	db 5 ; items
 	db "NEW NAME@"
 MalePlayerNameArray:
-	db "RED@"
-	db "ASH@"
-	db "JACK@"
-	db "JOHN@"
+	db "Red@"
+	db "Ash@"
+	db "Jack@"
+	db "John@"
 	db 2 ; title indent
 	db " NAME @" ; title
 

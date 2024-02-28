@@ -8996,8 +8996,8 @@ GetTrainerBackpic:
 
 .Chris:
 ; It's a boy.
-	ld b, BANK(ChrisBackpic)
-	ld hl, ChrisBackpic
+	ld b, BANK(RedBackpic)
+	ld hl, RedBackpic
 
 .Decompress:
 	ld de, vTiles2 tile $31

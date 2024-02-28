@@ -36,7 +36,7 @@ Copycat:
 	iftrue .Default_Female_1
 	applymovement COPYCATSHOUSE2F_COPYCAT1, CopycatSpinAroundMovementData
 	faceplayer
-	variablesprite SPRITE_COPYCAT, SPRITE_CHRIS
+	variablesprite SPRITE_COPYCAT, SPRITE_RED
 	sjump .Default_Merge_1
 
 .Default_Female_1:
@@ -132,7 +132,7 @@ Copycat:
 	iftrue .GotPass_Female_1
 	applymovement COPYCATSHOUSE2F_COPYCAT1, CopycatSpinAroundMovementData
 	faceplayer
-	variablesprite SPRITE_COPYCAT, SPRITE_CHRIS
+	variablesprite SPRITE_COPYCAT, SPRITE_RED
 	sjump .GotPass_Merge_1
 
 .GotPass_Female_1:

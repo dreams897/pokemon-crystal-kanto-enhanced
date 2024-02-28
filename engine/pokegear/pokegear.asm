@@ -2744,7 +2744,7 @@ TownMapPlayerIcon:
 	ld e, l
 	ld hl, vTiles0 tile $14
 	ld c, 4 ; # tiles
-	ld a, BANK(ChrisSpriteGFX) ; does nothing
+	ld a, BANK(RedSpriteGFX) ; does nothing
 	call Request2bpp
 ; Animation/palette
 	depixel 0, 0

@@ -1,6 +1,6 @@
 SECTION "Trainer Backpics", ROMX
 
-ChrisBackpic::
+RedBackpic::
 INCBIN "gfx/player/red_back.2bpp.lz"
 DudeBackpic::
 INCBIN "gfx/battle/dude.2bpp.lz"

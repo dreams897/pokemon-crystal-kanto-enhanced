@@ -65,7 +65,6 @@ TrainerGroups:
 	dw KimonoGirlGroup
 	dw TwinsGroup
 	dw PokefanFGroup
-	dw RedGroup
 	dw BlueGroup
 	dw OfficerGroup
 	dw GruntFGroup
