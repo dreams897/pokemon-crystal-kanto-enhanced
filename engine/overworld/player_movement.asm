@@ -306,6 +306,9 @@ DoPlayerMovement::
 	ret
 
 .walk
+	ld a, [wCurInput]
+	and B_BUTTON
+	jr nz, .run
 	ld a, STEP_WALK
 	call .DoStep
 	scf
@@ -317,8 +320,10 @@ DoPlayerMovement::
 	scf
 	ret
 
-.unused ; unreferenced
-	xor a
+.run
+	ld a, STEP_RUN
+	call .DoStep
+	scf
 	ret
 
 .spin
@@ -489,6 +494,7 @@ DoPlayerMovement::
 	dw .BackJumpStep
 	dw .FinishFacing
 	dw .SpinStep
+	dw .RunStep
 	assert_table_length NUM_STEPS
 
 .SlowStep:
@@ -537,6 +543,12 @@ DoPlayerMovement::
 	turn_in_up
 	turn_in_left
 	turn_in_right
+	
+.RunStep
+	run_step DOWN
+	run_step UP
+	run_step LEFT
+	run_step RIGHT
 
 .StandInPlace:
 	ld a, 0
