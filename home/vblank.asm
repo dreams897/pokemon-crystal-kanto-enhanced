@@ -115,7 +115,7 @@ VBlank0::
 	; vblank-sensitive operations are done
 
 	xor a
-	ld [wVBlankOccurred], a
+	ld [wVBlankOccurred], a	
 
 	ld a, [wTextDelayFrames]
 	and a

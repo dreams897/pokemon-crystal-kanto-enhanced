@@ -200,7 +200,7 @@ Movement_step_loop:
 	jp ContinueReadingMovement
 
 Movement_step_end:
-	jp Movement_48
+	call RestoreDefaultMovement
 	ld hl, OBJECT_MOVEMENT_TYPE
 	add hl, bc
 	ld [hl], a
@@ -489,11 +489,11 @@ Movement_big_step_left:
 
 Movement_big_step_right:
 	ld a, $3 << 2 | RIGHT ; STEP_RUN
-	Movement_do_step:
+Movement_do_step:
 	ld d, OBJECT_ACTION_STEP
 Movement_normal_step:
 	jp NormalStep
-
+	
 Movement_run_step_down:
 	ld a, $3 << 2 | DOWN  ; STEP_RUN
 	jp Movement_do_run
@@ -653,7 +653,7 @@ Movement_fast_jump_step_left:
 	jp JumpStep
 
 Movement_fast_jump_step_right:
-	ld a, $3 << 2 | RIGHT ; STEP_RUN
+	ld a, $3 << 2 | LEFT  ; STEP_RUN
 	jp JumpStep
 
 Movement_turn_step_down:

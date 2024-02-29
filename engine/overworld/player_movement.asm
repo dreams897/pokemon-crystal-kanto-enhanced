@@ -543,7 +543,7 @@ DoPlayerMovement::
 	turn_in_up
 	turn_in_left
 	turn_in_right
-	
+
 .RunStep
 	run_step DOWN
 	run_step UP

@@ -146,7 +146,7 @@ HandleMap:
 	ld a, [wMapStatus]
 	cp MAPSTATUS_HANDLE
 	ret nz
-	
+
 	call HandleMapObjects
 	call NextOverworldFrame
 	call HandleMapBackground
@@ -164,8 +164,6 @@ MapEvents:
 	ret
 
 NextOverworldFrame:
-	ld a, [wOverworldDelay]
-	and a
 	; If we haven't already performed a delay outside DelayFrame as a result
 	; of a busy LY overflow, perform that now.
 	ld a, [hDelayFrameLY]

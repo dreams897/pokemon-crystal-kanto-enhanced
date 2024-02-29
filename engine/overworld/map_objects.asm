@@ -1099,6 +1099,7 @@ RandomStepDuration_Slow:
 	call Random
 	ldh a, [hRandomAdd]
 	and %11111110
+	jr z, RandomStepDuration_Slow
 	jr _SetRandomStepDuration
 
 RandomStepDuration_Fast:
@@ -1649,10 +1650,10 @@ StepFunction_Turn:
 	ld hl, OBJECT_STEP_FRAME
 	add hl, bc
 	ld a, [hl]
-	ld [hl], 4
+	ld [hl], 2
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
-	ld [hl], 4
+	ld [hl], 2
 	call ObjectStep_IncAnonJumptableIndex
 .step1
 	ld hl, OBJECT_STEP_DURATION
@@ -2490,6 +2491,7 @@ HandleNPCStep::
 	cp NUM_OBJECT_STRUCTS
 	jr nz, .loop
 	ret
+	
 	
 .ResetStepVector
 	xor a
