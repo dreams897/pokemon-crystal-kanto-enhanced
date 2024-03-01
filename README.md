@@ -24,12 +24,12 @@
 ### Roadmap:
 
 * Finish porting all work done so far in [Pokémon Kanto Enhanced](https://github.com/dreams897/pokered-GBC-Kanto-Enhanced)
-* Add in Safari Zone
+* Add Safari Zone
 
 ## Frequently Asked Questions
 
 ### Q: How is this different from Luna's version?
-A: This project is based on the Crystal disassembly and adds a newer engine and code. Compared to Luna's this actually removes many features that I felt were too "new" for the game, or at least my vision of it. I wanted to update the game but still give it that gen 1 feel. This version does not include any new maps such as Mt. Moon Square, Faraway Island, etc. and Mew is now behind the truck in Vermilion dock instead of Faraway island. Also featuring 60fps, only 151 original Pokémon available, the gambler in Viridian city is lying down once agin, many sprites and the tilesets were reverted back to gen 1. Ditto at the Day Care is a new animated sprite and the Day Care in general has been greatly improved visually, but I probably won't be using the egg feature because it doesn't make a lot of sense without baby Pokémon. In-game trades have also been changed, among various other features.
+A: This project is based on the Crystal disassembly and adds a newer engine and code. Compared to Luna's this actually removes many features that I felt were too "new" for the game, or at least my vision of it. I wanted to update the game but still give it that gen 1 feel. This version does not include any new maps such as Mt. Moon Square, Faraway Island, etc. and Mew is now behind the truck in Vermilion dock instead of Faraway island. Also featuring 60fps, only 151 original Pokémon available, the gambler in Viridian city is lying down once agin, many sprites and the tilesets were reverted back to gen 1. Ditto at the Day Care is a new animated sprite and the Day Care in general has been greatly improved visually, but I won't be using the egg hatching feature because it doesn't make a lot of sense without baby Pokémon. In-game trades have also been changed, among various other features.
 
 ### Q: Are you keeping the newer gen 2 features like cell phone, Pokegear, etc?
 A: Some features that are included in Crystal do fit the vision for this project but not all of them. I will not be including the cell phone feature or egg hatching, because they don't add anything useful to this port. With no baby Pokemon and no script changing (dialogue) I see no reason to add these features. I will be keeping features such as shiny Pokemon, berry trees, and the clock!
