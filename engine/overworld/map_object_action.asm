@@ -19,7 +19,6 @@ ObjectActionPairPointers:
 	dw SetFacingBoulderDust,           SetFacingStanding
 	dw SetFacingGrassShake,            SetFacingStanding
 	dw SetFacingSkyfall,               SetFacingCurrent
-	dw SetFacingRunAction,             SetFacingCurrent
 	assert_table_length NUM_OBJECT_ACTIONS
 
 SetFacingStanding:
@@ -290,26 +289,5 @@ SetFacingGrassShake:
 	inc a ; FACING_GRASS_2
 
 .ok
-	ld [hl], a
-	ret
-	
-SetFacingRunAction:
-	ld hl, OBJECT_FLAGS1
-	add hl, bc
-	bit SLIDING_F, [hl]
-	jp nz, SetFacingCurrent
-
-	ld hl, OBJECT_STEP_FRAME
-	add hl, bc
-	inc [hl]
-	ld a, [hl]
-	rrca
-	rrca
-	and %11
-	ld d, a
-	call GetSpriteDirection
-	or d
-	ld hl, OBJECT_FACING
-	add hl, bc
 	ld [hl], a
 	ret
