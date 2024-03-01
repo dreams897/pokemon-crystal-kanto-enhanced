@@ -146,7 +146,6 @@ HandleMap:
 	ld a, [wMapStatus]
 	cp MAPSTATUS_HANDLE
 	ret nz
-
 	call HandleMapObjects
 	call NextOverworldFrame
 	call HandleMapBackground

@@ -25,10 +25,6 @@ DoPlayerMovement::
 	ret nz
 
 	ld a, c
-	and A_BUTTON | B_BUTTON
-	ret nz
-
-	ld a, c
 	or D_DOWN
 	ld [wCurInput], a
 	ret
@@ -274,10 +270,6 @@ DoPlayerMovement::
 	cp 2
 	jr z, .bump
 
-	ld a, [wSpinning]
-	and a
-	jr nz, .spin
-
 	ld a, [wPlayerTile]
 	call CheckIceTile
 	jr nc, .ice
@@ -319,29 +311,34 @@ DoPlayerMovement::
 	call .DoStep
 	scf
 	ret
-
+	
 .run
 	ld a, STEP_RUN
 	call .DoStep
+	push af
+	ld a, [wWalkingDirection]
+	cp STANDING
+	call nz, CheckTrainerRun
+	pop af
 	scf
 	ret
 
-.spin
-	ld de, SFX_SQUEAK
-	call PlaySFX
-	ld a, STEP_SPIN
-	call .DoStep
-	scf
-	ret
 
 .bump
 	xor a
-	ld [wSpinning], a
 	ret
 
 .TrySurf:
 	call .CheckSurfPerms
+	push af
 	ld [wWalkingIntoLand], a
+	ld a, [wPlayerStepType]
+	cp STEP_TYPE_TURN
+	jr nz, .not_surf_turning
+	xor a
+	ld [wWalkingIntoLand], a
+.not_surf_turning
+	pop af
 	jr c, .surf_bump
 
 	call .CheckNPC
@@ -487,14 +484,13 @@ DoPlayerMovement::
 	table_width 2, DoPlayerMovement.Steps
 	dw .SlowStep
 	dw .NormalStep
-	dw .FastStep
+	dw .RunStep
+	dw .BikeStep
 	dw .JumpStep
 	dw .SlideStep
 	dw .TurningStep
 	dw .BackJumpStep
 	dw .FinishFacing
-	dw .SpinStep
-	dw .RunStep
 	assert_table_length NUM_STEPS
 
 .SlowStep:
@@ -507,11 +503,16 @@ DoPlayerMovement::
 	step UP
 	step LEFT
 	step RIGHT
-.FastStep:
+.RunStep:
 	big_step DOWN
 	big_step UP
 	big_step LEFT
 	big_step RIGHT
+.BikeStep:
+	bike_step DOWN
+	bike_step UP
+	bike_step LEFT
+	bike_step RIGHT
 .JumpStep:
 	jump_step DOWN
 	jump_step UP
@@ -538,18 +539,6 @@ DoPlayerMovement::
 	db $80 | LEFT
 	db $80 | RIGHT
 
-.SpinStep
-	turn_in_down
-	turn_in_up
-	turn_in_left
-	turn_in_right
-
-.RunStep
-	run_step DOWN
-	run_step UP
-	run_step LEFT
-	run_step RIGHT
-
 .StandInPlace:
 	ld a, 0
 	ld [wPlayerTurningDirection], a
@@ -567,14 +556,8 @@ DoPlayerMovement::
 	ret
 
 .CheckForced:
-; When sliding on ice or spinning, input is forced to remain in the same direction.
- 
-	call CheckSpinning
-	jr z, .not_spinning
-	dec a
-	jr .force
+; When sliding on ice, input is forced to remain in the same direction.
 
-.not_spinning
 	call CheckStandingOnIce
 	ret nc
 
@@ -582,7 +565,6 @@ DoPlayerMovement::
 	cp 0
 	ret z
 
-.force
 	maskbits NUM_DIRECTIONS
 	ld e, a
 	ld d, 0
@@ -846,44 +828,167 @@ CheckStandingOnIce::
 .not_ice
 	and a
 	ret
+	
+CheckTrainerRun:
+; Check if any trainer on the map sees the player.
 
-CheckSpinning::
-	ld a, [wPlayerTile]
-	cp COLL_STOP_SPIN
-	jr z, .stop_spin
-	call CheckSpinTile
-	jr z, .start_spin
-	ld a, [wSpinning]
+; Skip the player object.
+	ld a, 1
+	ld de, wMap1Object
+
+.loop
+
+; Have them face the player if the object:
+
+	push af
+	push de
+
+; Has a sprite
+	ld hl, MAPOBJECT_SPRITE
+	add hl, de
+	ld a, [hl]
 	and a
-	ret
+	jr z, .next
 
-.start_spin
-	ld a, c
+; Is a trainer
+	ld hl, MAPOBJECT_TYPE
+	add hl, de
+	ld a, [hl]
+	and $f
+	cp $2
+	jr nz, .next
+; Is visible on the map
+	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
+	add hl, de
+	ld a, [hl]
+	cp -1
+	jr z, .next
+
+; Spins around
+	ld hl, MAPOBJECT_MOVEMENT
+	add hl, de
+	ld a, [hl]
+	cp SPRITEMOVEDATA_SPINRANDOM_SLOW
+	jr z, .spinner
+	cp SPRITEMOVEDATA_SPINRANDOM_FAST
+	jr z, .spinner
+	cp SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE
+	jr z, .spinner
+	cp SPRITEMOVEDATA_SPINCLOCKWISE
+	jr nz, .next
+
+.spinner
+
+; You're within their sight range
+	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
+	add hl, de
+	ld a, [hl]
+	call GetObjectStruct
+	call AnyFacingPlayerDistance_bc
+	ld hl, MAPOBJECT_SIGHT_RANGE
+	add hl, de
+	ld a, [hl]
+	cp c
+	jr c, .next
+
+; Get them to face you
+	ld a, b
+	push af
+	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
+	add hl, de
+	ld a, [hl]
+	call GetObjectStruct
+	pop af
+	call SetSpriteDirection
+	add hl, bc
+	ld a, [hl]
+	cp $40
+	jr nc, .next
+	ld a, $40
+	ld [hl], a
+
+.next
+	pop de
+	ld hl, OBJECT_LENGTH
+	add hl, de
+	ld d, h
+	ld e, l
+
+	pop af
 	inc a
-	ld [wSpinning], a
-	and a
-	ret
-
-.stop_spin
+	cp NUM_OBJECTS
+	jr nz, .loop
 	xor a
-	ld [wSpinning], a
 	ret
 
-CheckSpinTile:
-	cp COLL_SPIN_UP
-	ld c, UP
-	ret z
-	cp COLL_SPIN_DOWN
-	ld c, DOWN
-	ret z
-	cp COLL_SPIN_LEFT
-	ld c, LEFT
-	ret z
-	cp COLL_SPIN_RIGHT
-	ld c, RIGHT
-	ret z
-	ld c, STANDING
+AnyFacingPlayerDistance_bc::
+; Returns distance in c and direction in b.
+	push de
+	call .AnyFacingPlayerDistance
+	ld b, d
+	ld c, e
+	pop de
 	ret
+
+.AnyFacingPlayerDistance
+	ld hl, OBJECT_MAP_X
+	add hl, bc
+	ld d, [hl]
+
+	ld hl, OBJECT_MAP_Y
+	add hl, bc
+	ld e, [hl]
+
+	ld a, [hJoypadDown]
+	bit 7, a
+	jr nz, .down
+	bit 6, a
+	jr nz, .up
+	bit 5, a
+	jr nz, .left
+	bit 4, a
+	jr nz, .right
+.down
+	lb bc, 1, 0
+	jr .got_vector
+.up
+	lb bc, -1, 0
+	jr .got_vector
+.left
+	lb bc, 0, -1
+	jr .got_vector
+.right
+	lb bc, 0, 1
+.got_vector
+
+	ld a, [wPlayerMapX]
+	add c
+	sub d
+	ld l, OW_RIGHT
+	jr nc, .check_y
+	cpl
+	inc a
+	ld l, OW_LEFT
+.check_y
+	ld d, a
+	ld a, [wPlayerMapY]
+	add b
+	sub e
+	ld h, OW_DOWN
+	jr nc, .compare
+	cpl
+	inc a
+	ld h, OW_UP
+.compare
+	cp d
+	ld e, a
+	ld a, d
+	ld d, h
+	ret nc
+	ld e, a
+	ld d, l
+	ret
+
 
 StopPlayerForEvent::
 	ld hl, wPlayerNextMovement

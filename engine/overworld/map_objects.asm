@@ -405,16 +405,16 @@ StepVectors:
 	db  0, -1, 16, 1
 	db -1,  0, 16, 1
 	db  1,  0, 16, 1
-	; fast
-	db  0,  4,  4, 4
-	db  0, -4,  4, 4
-	db -4,  0,  4, 4
-	db  4,  0,  4, 4
 	; running shoes
 	db  0,  2,  8, 2
 	db  0, -2,  8, 2
 	db -2,  0,  8, 2
 	db  2,  0,  8, 2
+	; bike
+	db  0,  4,  4, 4
+	db  0, -4,  4, 4
+	db -4,  0,  4, 4
+	db  4,  0,  4, 4
 
 GetStepVectorSign:
 	add a
@@ -905,7 +905,7 @@ MovementFunction_Shadow:
 	ld a, [hl]
 	inc a
 	add a
-	add 0
+	add a
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
 	ld [hl], a
@@ -962,6 +962,7 @@ MovementFunction_BoulderDust:
 	ld a, [hl]
 	inc a
 	add a
+	add a
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
 	ld [hl], a
@@ -1005,6 +1006,7 @@ MovementFunction_ShakingGrass:
 	add hl, de
 	ld a, [hl]
 	add -1
+	add a
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
 	ld [hl], a
@@ -1052,7 +1054,6 @@ MovementFunction_ScreenShake:
 .GetDurationAndField1e:
 	ld d, a
 	and %00111111
-	add a
 	ld e, a
 	ld a, d
 	rlca
@@ -1279,10 +1280,10 @@ StepFunction_TeleportFrom:
 	ld [hl], 0
 	ld hl, OBJECT_JUMP_HEIGHT
 	add hl, bc
-	ld [hl], $20
+	ld [hl], $10
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
-	ld [hl], 32
+	ld [hl], 16
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
 	res OVERHEAD_F, [hl]
@@ -1350,7 +1351,7 @@ StepFunction_TeleportTo:
 	ld [hl], 0
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
-	ld [hl], 32
+	ld [hl], 16
 	call ObjectStep_IncAnonJumptableIndex
 	ret
 
@@ -1650,10 +1651,10 @@ StepFunction_Turn:
 	ld hl, OBJECT_STEP_FRAME
 	add hl, bc
 	ld a, [hl]
-	ld [hl], 2
+	ld [hl], 4
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
-	ld [hl], 2
+	ld [hl], 4
 	call ObjectStep_IncAnonJumptableIndex
 .step1
 	ld hl, OBJECT_STEP_DURATION
@@ -1670,7 +1671,7 @@ StepFunction_Turn:
 	ld [hl], a
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
-	ld [hl], 2
+	ld [hl], 4
 	call ObjectStep_IncAnonJumptableIndex
 .step2
 	ld hl, OBJECT_STEP_DURATION
@@ -1741,6 +1742,7 @@ StepFunction_TrackingObject:
 	ld a, [hl]
 	and a
 	ret z
+	dec [hl]
 	dec [hl]
 	ret nz
 .nope
@@ -2491,8 +2493,7 @@ HandleNPCStep::
 	cp NUM_OBJECT_STRUCTS
 	jr nz, .loop
 	ret
-	
-	
+
 .ResetStepVector
 	xor a
 	ld [wPlayerStepVectorX], a
