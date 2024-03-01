@@ -1,5 +1,83 @@
 # Pokémon Kanto Enchanced - Crystal Port
-## This is a work in progress port of Pokémon Kanto Enhanced to the Crystal engine
+## This is a work in progress port of [Pokémon Kanto Enhanced](https://github.com/dreams897/pokered-GBC-Kanto-Enhanced) to the Crystal engine
+
+### Inspired by [RegularLuna's Red++ v3](https://github.com/JustRegularLuna/rpp-backup)
+
+### Main Features:
+
+* First real attempt at porting Pokemon Red to the Crystal engine?!
+* QOL updates and bugfixes to the Kanto region while keeping everything very familiar
+* Smooth 60fps
+* New ENBY (non-binary) player choice being added in addtion to boy/girl!
+* Girl/Green/Leaf sprite changed to fit gen 1 look
+* Only original 151 Pokémon are obtainable and will not be changed or expanded
+* All Starters can be obtained through in-game trades with NPCs in addition to your initial choice
+* Most text has been decapitalized
+* Switched Good Rod and Super Rod locations
+* New text speed options: Instant, Fast, and Medium (Fast being the default)
+* New animated Ditto sprite and Bulbasaur added to the Day Care!
+* The Day Care aims to be massively improved with new sprites, a PC in the corner, more accessable entrance, and will be added to the map/Fly
+* Tangela will be exclusive to the Safari Zone
+* New trades have been added, see list below!
+* Wild Pokémon areas aim to be a balance between Red, Blue and Yellow
+
+### Roadmap:
+
+* Finish porting all work done so far in [Pokémon Kanto Enhanced](https://github.com/dreams897/pokered-GBC-Kanto-Enhanced)
+* Add in Safari Zone
+
+## Frequently Asked Questions
+
+### Q: How is this different from Luna's version?
+A: The code for this project is much more recent via pokered and actually removes many features that I felt were too "new" for this game. I wanted to update the game but still give it that gen 1 feel. This version does not include any new maps such as Mt. Moon Square, Faraway Island, etc. and Mew is now behind the truck in Vermilion dock instead of Faraway island. Also featuring 60fps, only 151 original Pokémon are available, the gambler in Viridian city is lying down once agin, many sprites were reverted back to gen 1 (overworld Snorlax, some trainer sprites, etc.). Ditto at the Day Care is a new animated sprite and the Day Care in general has been greatly improved visually, but I probably won't be using the egg feature because it doesn't make a lot of sense without baby Pokémon. In-game trades have also been changed, among various other features.
+
+### Q: Are all Pokémon available?
+A: All original 151 Pokémon are obtainable and carefully placed throughout the map or available through trades, Celedon Prize Room, or gifts. No Pokémon past gen 1. 
+
+### Q: Is MISSINGNO still an issue (feature)?
+A: I'm probably going to make MISSINGNO a properly numbered Pokémon for less problems, but haven't implemented that yet.
+
+### Q: Is Mew available?
+A: Mew will be behind the truck and should be accessable after getting 4+ gym badges
+
+### Q: What are the new in-game trades?
+A: As follows:
+
+Give: Marowak 
+Get: Haunter (evolves!)
+
+Give: Pikachu 
+Get: Staryu
+
+Give: Hypno 
+Get: Kadabra (evolves!)
+
+Give: Gloom 
+Get: Bulbasaur
+
+Give: Rhyhorn 
+Get: Graveler (evolves!)
+
+Give: Primeape 
+Get: Machoke (evolves!)
+
+Give: Ninetails 
+Get: Charmander
+
+### Q: Is there a Move Deleter/Relearner?
+A: There will be a new house in Fuchsia City with both a Move Deleter and Relearner added! Also the grandpa of Bill is still next to it.
+
+### Q: Where are the item balls on route 2?
+A: They have been replaced by berry trees for technical reasons but have been changed to hidden items in the same spot.
+
+
+### Credits:
+
+* RegularLuna for inspiring me to make this
+* lwelyk for coding and support (this is a fork of what they started)
+
+[Discord Channel](https://discord.gg/cSCDrA96yh)
+
 
 [![Build Status][ci-badge]][ci]
 
