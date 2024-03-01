@@ -73,7 +73,7 @@ EngineFlags:
 	engine_flag wUnlockedUnowns, 7 ; unused
 
 	; fly
-	engine_flag wVisitedSpawns, SPAWN_HOME
+	engine_flag wVisitedSpawns, SPAWN_REDS_HOUSE_2F
 	engine_flag wVisitedSpawns, SPAWN_DEBUG
 	engine_flag wVisitedSpawns, SPAWN_PALLET
 	engine_flag wVisitedSpawns, SPAWN_VIRIDIAN

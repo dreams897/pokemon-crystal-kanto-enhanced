@@ -67,10 +67,10 @@ NewGame:
 	call OakSpeech
 	call InitializeWorld
 
-	ld a, LANDMARK_NEW_BARK_TOWN
+	ld a, LANDMARK_PALLET_TOWN
 	ld [wPrevLandmark], a
 
-	ld a, SPAWN_HOME
+	ld a, SPAWN_REDS_HOUSE_2F
 	ld [wDefaultSpawnpoint], a
 
 	ld a, MAPSETUP_WARP
