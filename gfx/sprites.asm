@@ -49,6 +49,7 @@ SECTION "Sprites 2", ROMX
 
 PokefanMSpriteGFX::            INCBIN "gfx/sprites/pokefan_m.2bpp"
 PokefanFSpriteGFX::            INCBIN "gfx/sprites/pokefan_f.2bpp"
+GamblerSpriteGFX::	       INCBIN "gfx/sprites/gambler.2bpp"
 GrampsSpriteGFX::              INCBIN "gfx/sprites/gramps.2bpp"
 GrannySpriteGFX::              INCBIN "gfx/sprites/granny.2bpp"
 SwimmerGuySpriteGFX::          INCBIN "gfx/sprites/swimmer_guy.2bpp"
