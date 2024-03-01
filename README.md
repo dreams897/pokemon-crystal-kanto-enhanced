@@ -1,4 +1,7 @@
-# Pokémon Crystal [![Build Status][ci-badge]][ci]
+# Pokémon Kanto Enchanced - Crystal Port
+## This is a work in progress port of Pokémon Kanto Enhanced to the Crystal engine
+
+[![Build Status][ci-badge]][ci]
 
 This is a disassembly of Pokémon Crystal.
 
