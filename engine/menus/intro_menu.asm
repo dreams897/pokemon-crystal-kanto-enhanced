@@ -636,7 +636,7 @@ OakSpeech:
 	
 	call StartPCItem
 
-	ld de, MUSIC_ROUTE_30
+	ld de, MUSIC_ROUTE_2
 	call PlayMusic
 
 	call RotateFourPalettesRight
