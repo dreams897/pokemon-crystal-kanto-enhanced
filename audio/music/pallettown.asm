@@ -7,12 +7,11 @@ Music_PalletTown:
 Music_PalletTown_Ch1:
 	tempo 160
 	volume 7, 7
-	vibrato 18, 2, 4
-	pitch_offset 1
 	stereo_panning FALSE, TRUE
-.mainloop:
 	duty_cycle 2
 	note_type 12, 12, 3
+
+Music_RBYPalletTown_branch_a7ce::
 	octave 3
 	note B_, 4
 	octave 4
@@ -152,14 +151,14 @@ Music_PalletTown_Ch1:
 	note D_, 2
 	note C_, 2
 	note D_, 2
-	sound_loop 0, .mainloop
+	sound_loop 0, Music_RBYPalletTown_branch_a7ce
+	sound_ret
 
-	sound_ret ; unused
 
 Music_PalletTown_Ch2:
 	duty_cycle 2
 	stereo_panning TRUE, FALSE
-.mainloop:
+Music_RBYPalletTown_branch_a861::
 	note_type 12, 13, 3
 	octave 5
 	note D_, 2
@@ -266,13 +265,14 @@ Music_PalletTown_Ch2:
 	note B_, 4
 	note B_, 8
 	note A_, 8
-	sound_loop 0, .mainloop
+	sound_loop 0, Music_RBYPalletTown_branch_a861
+	sound_ret
 
-	sound_ret ; unused
+
 Music_PalletTown_Ch3:
 	vibrato 24, 2, 8
 	note_type 12, 1, 2
-.mainloop:
+Music_RBYPalletTown_branch_a8e3::
 	octave 4
 	note G_, 6
 	note E_, 6
@@ -316,6 +316,5 @@ Music_PalletTown_Ch3:
 	note E_, 8
 	note E_, 8
 	note F#, 8
-	sound_loop 0, .mainloop
-
-	sound_ret ; unused
+	sound_loop 0, Music_RBYPalletTown_branch_a8e3
+	sound_ret
