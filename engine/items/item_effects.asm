@@ -2246,7 +2246,7 @@ PokeFluteEffect:
 	jr nz, .battle
 
 	push de
-	ld de, SFX_POKEFLUTE
+	ld de, SFX_POKEFLUTE_RBY
 	call WaitPlaySFX
 	call WaitSFX
 	pop de

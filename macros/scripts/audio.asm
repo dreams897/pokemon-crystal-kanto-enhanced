@@ -125,6 +125,8 @@ MACRO toggle_sfx
 	db toggle_sfx_cmd
 ENDM
 
+execute_music EQUS "toggle_sfx"
+
 	const pitch_slide_cmd ; $e0
 MACRO pitch_slide
 	db pitch_slide_cmd
@@ -319,4 +321,20 @@ ENDM
 	const sound_ret_cmd ; $ff
 MACRO sound_ret
 	db sound_ret_cmd
+ENDM
+
+MACRO load_wave
+	db $f3
+	IF _NARG > 16
+		REPT 16
+		dn \1, \2
+		SHIFT
+		SHIFT
+		ENDR
+	ELSE
+		REPT 16
+		db \1
+		SHIFT
+		ENDR
+	ENDC
 ENDM

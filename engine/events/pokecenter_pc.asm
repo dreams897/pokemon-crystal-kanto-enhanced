@@ -179,11 +179,11 @@ TurnOffPC:
 	ret
 
 PC_PlayBootSound:
-	ld de, SFX_BOOT_PC
+	ld de, SFX_TURN_ON_PC_1
 	jr PC_WaitPlaySFX
 
 PC_PlayShutdownSound:
-	ld de, SFX_SHUT_DOWN_PC
+	ld de, SFX_TURN_OFF_PC_1
 	call PC_WaitPlaySFX
 	call WaitSFX
 	ret

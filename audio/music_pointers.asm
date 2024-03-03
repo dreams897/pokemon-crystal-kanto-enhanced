@@ -21,17 +21,13 @@ Music:
 	dba Music_Route2
 	dba Music_MtMoon
 	dba Music_ShowMeAround
-	dba Music_GameCorner
 	dba Music_Bicycle
-	dba Music_HallOfFame
 	dba Music_ViridianCity
 	dba Music_CeladonCity
 	dba Music_TrainerVictory
 	dba Music_WildPokemonVictory
 	dba Music_GymLeaderVictory
 	dba Music_MtMoonSquare
-	dba Music_Gym
-	dba Music_PalletTown
 	dba Music_ProfOaksPokemonTalk
 	dba Music_ProfOak
 	dba Music_LookRival
@@ -39,7 +35,6 @@ Music:
 	dba Music_Surf
 	dba Music_Evolution
 	dba Music_NationalPark
-	dba Music_Credits
 	dba Music_AzaleaTown
 	dba Music_CherrygroveCity
 	dba Music_LookKimonoGirl
@@ -53,18 +48,14 @@ Music:
 	dba Music_ChampionBattle
 	dba Music_RivalBattle
 	dba Music_RocketBattle
-	dba Music_ElmsLab
 	dba Music_DarkCave
 	dba Music_Route29
 	dba Music_Route36
-	dba Music_SSAqua
 	dba Music_LookYoungster
 	dba Music_LookBeauty
 	dba Music_LookRocket
 	dba Music_LookPokemaniac
 	dba Music_LookSage
-	dba Music_NewBarkTown
-	dba Music_GoldenrodCity
 	dba Music_VermilionCity
 	dba Music_PokemonChannel
 	dba Music_PokeFluteChannel
@@ -73,7 +64,6 @@ Music:
 	dba Music_BurnedTower
 	dba Music_Lighthouse
 	dba Music_LakeOfRage
-	dba Music_IndigoPlateau
 	dba Music_Route37
 	dba Music_RocketHideout
 	dba Music_DragonsDen
@@ -88,7 +78,6 @@ Music:
 	dba Music_GoldSilverOpening
 	dba Music_GoldSilverOpening2
 	dba Music_MainMenu
-	dba Music_RuinsOfAlphInterior
 	dba Music_RocketTheme
 	dba Music_DancingHall
 	dba Music_ContestResults
@@ -107,4 +96,50 @@ Music:
 	dba Music_SuicuneBattle
 	dba Music_BattleTowerLobby
 	dba Music_MobileCenter
+; RBY
+	dba Music_RBYPalletTown
+	dba Music_Pokecenter
+	dba Music_RBYGym
+	dba Music_Cities1
+	dba Music_Cities2
+	dba Music_Celadon
+	dba Music_Cinnabar
+	dba Music_Vermilion
+	dba Music_Lavender
+	dba Music_SSAnne
+	dba Music_MeetProfOak
+	dba Music_MeetRival
+	dba Music_MuseumGuy
+	dba Music_SafariZone
+	dba Music_PkmnHealed
+	dba Music_Routes1
+	dba Music_Routes2
+	dba Music_Routes3
+	dba Music_Routes4
+	dba Music_RBYIndigoPlateau
+	dba Music_GymLeaderBattle
+	dba Music_TrainerBattle
+	dba Music_WildBattle
+	dba Music_FinalBattle
+	dba Music_DefeatedTrainer
+	dba Music_DefeatedWildMon
+	dba Music_DefeatedGymLeader
+	dba Music_RBYTitleScreen
+	dba Music_RBYCredits
+	dba Music_RBYHallOfFame
+	dba Music_OaksLab
+	dba Music_JigglypuffSong
+	dba Music_BikeRiding
+	dba Music_Surfing
+	dba Music_RBYGameCorner
+	dba Music_IntroBattle
+	dba Music_Dungeon1
+	dba Music_Dungeon2
+	dba Music_Dungeon3
+	dba Music_CinnabarMansion
+	dba Music_PokemonTower
+	dba Music_SilphCo
+	dba Music_MeetEvilTrainer
+	dba Music_MeetFemaleTrainer
+	dba Music_MeetMaleTrainer
 	assert_table_length NUM_MUSIC_SONGS
