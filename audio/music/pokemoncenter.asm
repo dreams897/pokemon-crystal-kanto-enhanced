@@ -11,6 +11,7 @@ Music_PokemonCenter_Ch1:
 	vibrato 10, 2, 2
 	toggle_perfect_pitch
 Music_Pokecenter_branch_be61::
+	stereo_panning FALSE, TRUE
 	note_type 12, 10, 3
 	octave 3
 	note F#, 2
@@ -90,6 +91,7 @@ Music_Pokecenter_branch_be61::
 	note G_, 2
 	note A_, 2
 	note B_, 2
+	stereo_panning TRUE, FALSE
 	note F#, 2
 	note E_, 2
 	note D_, 4
@@ -153,12 +155,10 @@ Music_Pokecenter_branch_be61::
 	note G_, 2
 	sound_loop 0, Music_Pokecenter_branch_be61
 
-
 Music_PokemonCenter_Ch2:
 	vibrato 8, 2, 5
-	stereo_panning TRUE, TRUE
-
 Music_Pokecenter_branch_befc::
+	stereo_panning TRUE, TRUE
 	sound_call Music_Pokecenter_branch_bf4e
 	stereo_panning FALSE, TRUE
 	duty_cycle 3
