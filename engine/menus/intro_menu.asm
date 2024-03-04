@@ -64,6 +64,7 @@ NewGame:
 	call ResetWRAM
 	call NewGame_ClearTilemapEtc
 	call PlayerProfileSetup
+	call GetPokeGear
 	call OakSpeech
 	call InitializeWorld
 
@@ -629,16 +630,8 @@ Continue_DisplayGameTime:
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	jp PrintNum
 	
-PokegearName:
-	db "#GEAR@"
-
-PokeGearReceivedItemStd:
-	jumpstd ReceiveItemScript
-	end
-
-OakSpeech:
+GetPokeGear:
 	farcall InitClock
-	
 	getstring STRING_BUFFER_4, PokegearName
 	scall PokeGearReceivedItemStd
 	setflag ENGINE_POKEGEAR
@@ -646,7 +639,6 @@ OakSpeech:
 	addcellnum PHONE_MOM
 	setevent EVENT_PLAYERS_HOUSE_MOM_1
 	clearevent EVENT_PLAYERS_HOUSE_MOM_2
-	writetext MomGivesPokegearText
 	promptbutton
 	special SetDayOfWeek
 .SetDayOfWeek:
@@ -668,6 +660,27 @@ OakSpeech:
 	closetext
 	end
 	
+PokegearName:
+	db "#GEAR@"
+
+PokeGearReceivedItemStd:
+	jumpstd ReceiveItemScript
+	end
+	
+IsItDSTText:
+	text "Is it Daylight"
+	line "Saving Time now?"
+	done
+
+ComeHomeForDSTText:
+	text "Come home to"
+	line "adjust your clock"
+
+	para "for Daylight"
+	line "Saving Time."
+	done
+
+OakSpeech:
 	call RotateFourPalettesLeft
 	call ClearTilemap
 	
@@ -776,34 +789,6 @@ OakSpeech:
 	ld hl, OakText10
 	call PrintText
 	ret
-	
-MomGivesPokegearText:
-	text "#MON GEAR, or"
-	line "just #GEAR."
-
-	para "It's essential if"
-	line "you want to be a"
-	cont "good trainer."
-
-	para "Oh, the day of the"
-	line "week isn't set."
-
-	para "You mustn't forget"
-	line "that!"
-	done
-	
-IsItDSTText:
-	text "Is it Daylight"
-	line "Saving Time now?"
-	done
-
-ComeHomeForDSTText:
-	text "Come home to"
-	line "adjust your clock"
-
-	para "for Daylight"
-	line "Saving Time."
-	done
 
 OakText1:
 	text_far _OakText1
