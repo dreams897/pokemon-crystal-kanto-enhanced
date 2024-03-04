@@ -630,7 +630,42 @@ Continue_DisplayGameTime:
 	jp PrintNum
 
 OakSpeech:
-	; farcall InitClock
+	farcall InitClock
+	getstring STRING_BUFFER_4, PokegearName
+	scall PokeGearReceivedItemStd
+	setflag ENGINE_POKEGEAR
+	setflag ENGINE_PHONE_CARD
+	addcellnum PHONE_MOM
+	setevent EVENT_PLAYERS_HOUSE_MOM_1
+	clearevent EVENT_PLAYERS_HOUSE_MOM_2
+	writetext MomGivesPokegearText
+	promptbutton
+	special SetDayOfWeek
+.SetDayOfWeek:
+	writetext IsItDSTText
+	yesorno
+	iffalse .WrongDay
+	special InitialSetDSTFlag
+	yesorno
+	iffalse .SetDayOfWeek
+	sjump .DayOfWeekDone
+
+.WrongDay:
+	special InitialClearDSTFlag
+	yesorno
+	iffalse .SetDayOfWeek
+.DayOfWeekDone:
+	writetext ComeHomeForDSTText
+	waitbutton
+	closetext
+	end
+	
+PokegearName:
+	db "#GEAR@"
+
+PokeGearReceivedItemStd:
+	jumpstd ReceiveItemScript
+	end
 	call RotateFourPalettesLeft
 	call ClearTilemap
 	
@@ -739,6 +774,34 @@ OakSpeech:
 	ld hl, OakText10
 	call PrintText
 	ret
+	
+MomGivesPokegearText:
+	text "#MON GEAR, or"
+	line "just #GEAR."
+
+	para "It's essential if"
+	line "you want to be a"
+	cont "good trainer."
+
+	para "Oh, the day of the"
+	line "week isn't set."
+
+	para "You mustn't forget"
+	line "that!"
+	done
+	
+IsItDSTText:
+	text "Is it Daylight"
+	line "Saving Time now?"
+	done
+
+ComeHomeForDSTText:
+	text "Come home to"
+	line "adjust your clock"
+
+	para "for Daylight"
+	line "Saving Time."
+	done
 
 OakText1:
 	text_far _OakText1
