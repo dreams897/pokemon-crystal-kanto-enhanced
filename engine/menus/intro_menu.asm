@@ -628,9 +628,17 @@ Continue_DisplayGameTime:
 	ld de, wGameTimeMinutes
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	jp PrintNum
+	
+PokegearName:
+	db "#GEAR@"
+
+PokeGearReceivedItemStd:
+	jumpstd ReceiveItemScript
+	end
 
 OakSpeech:
 	farcall InitClock
+	
 	getstring STRING_BUFFER_4, PokegearName
 	scall PokeGearReceivedItemStd
 	setflag ENGINE_POKEGEAR
@@ -660,12 +668,6 @@ OakSpeech:
 	closetext
 	end
 	
-PokegearName:
-	db "#GEAR@"
-
-PokeGearReceivedItemStd:
-	jumpstd ReceiveItemScript
-	end
 	call RotateFourPalettesLeft
 	call ClearTilemap
 	
